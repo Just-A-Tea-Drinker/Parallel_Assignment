@@ -210,16 +210,16 @@ int main(int argc, char** argv) {
 		cl::Kernel kernel_ReProject = cl::Kernel(program, "ReProject");
 		kernel_ReProject.setArg(0, dev_image_input);
 		kernel_ReProject.setArg(1, Rup);
-		kernel_ReProject.setArg(2, Gup);
-		kernel_ReProject.setArg(3, Bup);
-		kernel_ReProject.setArg(4, dev_image_output);
+		//kernel_ReProject.setArg(1, Gup);
+		//kernel_ReProject.setArg(1, Bup);
+		kernel_ReProject.setArg(2, dev_image_output);
 		
 
 		queue.enqueueNDRangeKernel(kernel_ReProject, cl::NullRange, cl::NDRange(image_input.size()), cl::NullRange, NULL, &lookUp);
-		
-
-		
-
+		kernel_ReProject.setArg(1, Gup);
+		queue.enqueueNDRangeKernel(kernel_ReProject, cl::NullRange, cl::NDRange(image_input.size()), cl::NullRange, NULL, &lookUp);
+		kernel_ReProject.setArg(1, Bup);
+		queue.enqueueNDRangeKernel(kernel_ReProject, cl::NullRange, cl::NDRange(image_input.size()), cl::NullRange, NULL, &lookUp);
 		vector<unsigned char> output_buffer(image_input.size());
 		//4.3 Copy the result from device to host
 		queue.enqueueReadBuffer(dev_image_output, CL_TRUE, 0, output_buffer.size(), &output_buffer.data()[0]);

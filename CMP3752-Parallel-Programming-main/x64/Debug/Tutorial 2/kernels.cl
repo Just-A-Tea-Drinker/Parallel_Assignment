@@ -46,7 +46,7 @@ kernel void Map(global int* CumuCount,global int* Normalised) {
 
 
 
-kernel void ReProject(global const uchar*  image, global int* rup, global int* gup, global int* bup, global uchar* C) {
+kernel void ReProject(global const uchar*  image, global int* hist,global uchar* C) {
 	
 	int id = get_global_id(0);
 	int image_size = get_global_size(0)/3; //each image consists of 3 colour channels
@@ -54,16 +54,16 @@ kernel void ReProject(global const uchar*  image, global int* rup, global int* g
 	
 	if(colour_channel ==0)
 	{
-		 C[id]= rup[image[id]];
+		 C[id]= hist[image[id]];
 	
 	}
 	else if(colour_channel ==1)
 	{
-		C[id]= gup[image[id]];
+		C[id]= hist[image[id]];
 	}
 	else
 	{
-		C[id]= bup[image[id]];
+		C[id]= hist[image[id]];
 	}
 
 	
