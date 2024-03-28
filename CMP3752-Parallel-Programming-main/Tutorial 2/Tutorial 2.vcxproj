@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ImageHandler.cpp" />
     <ClCompile Include="Tutorial 2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,9 @@
     <CopyFileToFolders Include="images\test_large.ppm">
       <FileType>Document</FileType>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

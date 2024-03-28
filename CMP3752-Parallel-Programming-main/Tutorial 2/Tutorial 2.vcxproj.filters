@@ -18,10 +18,18 @@
     <ClCompile Include="Tutorial 2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImageHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="kernels\kernels.cl" />
     <CopyFileToFolders Include="images\test.ppm" />
     <CopyFileToFolders Include="images\test_large.ppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
